@@ -1,0 +1,14 @@
+From	To	Amount	Currency	LimitUsage
+Valid	SameAsFrom	Normal	Same	Available
+Frozen	Valid	Normal	Same	Available
+Valid	Valid	OverLimit	Different	Available
+Valid	Valid	OverLimit	Same	Available
+Valid	Valid	Normal	Different	Exhausted
+Missing	Valid	Normal	Same	Available
+Valid	Valid	OverBalance	Same	Available
+Frozen	Missing	Normal	Same	Available
+Valid	Valid	OverBalance	Different	Available
+Valid	Missing	Normal	Same	Available
+Valid	Valid	Zero	Same	Available
+Frozen	SameAsFrom	Normal	Same	Available
+Valid	Valid	Normal	Same	Exhausted
