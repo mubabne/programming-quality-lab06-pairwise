@@ -1,0 +1,25 @@
+From:       Valid, Frozen, Missing
+To:         Valid, Missing, SameAsFrom
+Amount:     Zero, Normal, OverBalance, OverLimit
+Currency:   Same, Different
+LimitUsage: Available, Exhausted
+
+# Category-partition-ийн SINGLE болон IF хязгаарлалтууд
+IF [From] = "Missing"
+THEN [To] = "Valid" AND [Amount] = "Normal" AND [Currency] = "Same" AND [LimitUsage] = "Available";
+
+IF [From] = "Frozen"
+THEN [Amount] = "Normal" AND [Currency] = "Same" AND [LimitUsage] = "Available";
+
+IF [To] IN {"Missing", "SameAsFrom"}
+THEN [Amount] = "Normal" AND [Currency] = "Same" AND [LimitUsage] = "Available";
+
+IF [Amount] = "Zero"
+THEN [From] = "Valid" AND [To] = "Valid" AND [Currency] = "Same" AND [LimitUsage] = "Available";
+
+IF [Amount] IN {"OverBalance", "OverLimit"}
+THEN [From] = "Valid" AND [To] = "Valid" AND [LimitUsage] = "Available";
+
+IF [LimitUsage] = "Exhausted"
+THEN [From] = "Valid" AND [To] = "Valid" AND [Amount] = "Normal";
+
